@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Staffing & Recruiting Service</title>
+    <title>Banking Industry</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -152,10 +152,10 @@
         <div class="set1">
           <img class="logo" src="./Assets/Logo_11zon.webp" alt="" />
           <p class="footer-para">
-            © 2025 <strong>Stackly AI Services</strong> empowers organizations
-            with advanced staffing solutions, talent-matching intelligence,
-            workforce automation,enabling smarter recruitment decisions,
-            exceptional team-building success.
+            © 2025 <strong>Stackly Banking Solutions</strong> empowers financial
+            institutions with secure digital banking systems, intelligent risk
+            analysis, automated compliance workflows, and
+            financial technologies—driving.
           </p>
           <a href="./error.html">
             <i class="fa-brands fa-square-linkedin"></i>
@@ -303,70 +303,81 @@
     </script>
 
     <script>
-  // Monthly Deposit Growth - Bar chart
-  new Chart(document.getElementById("monthlyDeposits"), {
-    type: "bar",
-    data: {
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-      datasets: [{
-        label: "Deposits ($k)",
-        data: [500, 550, 600, 580, 620, 650],
-        backgroundColor: "#E6633C",
-        borderColor: "#F21511",
-        borderWidth: 2
-      }]
-    },
-    options: { responsive: true }
-  });
+      // Monthly Deposit Growth - Bar chart
+      new Chart(document.getElementById("monthlyDeposits"), {
+        type: "bar",
+        data: {
+          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+          datasets: [
+            {
+              label: "Deposits ($k)",
+              data: [500, 550, 600, 580, 620, 650],
+              backgroundColor: "#E6633C",
+              borderColor: "#F21511",
+              borderWidth: 2,
+            },
+          ],
+        },
+        options: { responsive: true },
+      });
 
-  // Online Transactions - Line chart
-  new Chart(document.getElementById("onlineTransactions"), {
-    type: "line",
-    data: {
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-      datasets: [{
-        label: "Transactions (k)",
-        data: [200, 220, 250, 270, 300, 320],
-        backgroundColor: "rgba(230, 99, 60, 0.2)",
-        borderColor: "#E6633C",
-        borderWidth: 2,
-        fill: true,
-        tension: 0.4
-      }]
-    },
-    options: { responsive: true }
-  });
+      // Online Transactions - Line chart
+      new Chart(document.getElementById("onlineTransactions"), {
+        type: "line",
+        data: {
+          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+          datasets: [
+            {
+              label: "Transactions (k)",
+              data: [200, 220, 250, 270, 300, 320],
+              backgroundColor: "rgba(230, 99, 60, 0.2)",
+              borderColor: "#E6633C",
+              borderWidth: 2,
+              fill: true,
+              tension: 0.4,
+            },
+          ],
+        },
+        options: { responsive: true },
+      });
 
-  // Branch Performance - Doughnut chart
-  new Chart(document.getElementById("branchPerformance"), {
-    type: "doughnut",
-    data: {
-      labels: ["Downtown", "Uptown", "Suburban", "Rural"],
-      datasets: [{
-        data: [4000, 3500, 2800, 1500],
-        backgroundColor: ["#E6633C", "#F21511", "#FF8A65", "#36A2EB"]
-      }]
-    },
-    options: { responsive: true, cutout: "50%" }
-  });
+      // Branch Performance - Doughnut chart
+      new Chart(document.getElementById("branchPerformance"), {
+        type: "doughnut",
+        data: {
+          labels: ["Downtown", "Uptown", "Suburban", "Rural"],
+          datasets: [
+            {
+              data: [4000, 3500, 2800, 1500],
+              backgroundColor: ["#E6633C", "#F21511", "#FF8A65", "#36A2EB"],
+            },
+          ],
+        },
+        options: { responsive: true, cutout: "50%" },
+      });
 
-  // Customer Satisfaction - Radar chart
-  new Chart(document.getElementById("customerSatisfaction"), {
-    type: "radar",
-    data: {
-      labels: ["Service", "Support", "Online Experience", "Products"],
-      datasets: [{
-        label: "Satisfaction Score (%)",
-        data: [85, 90, 80, 75],
-        backgroundColor: "rgba(230, 99, 60, 0.2)",
-        borderColor: "#E6633C",
-        borderWidth: 2,
-        pointBackgroundColor: "#F21511"
-      }]
-    },
-    options: { responsive: true, scales: { r: { beginAtZero: true, max: 100 } } }
-  });
-</script>
+      // Customer Satisfaction - Radar chart
+      new Chart(document.getElementById("customerSatisfaction"), {
+        type: "radar",
+        data: {
+          labels: ["Service", "Support", "Online Experience", "Products"],
+          datasets: [
+            {
+              label: "Satisfaction Score (%)",
+              data: [85, 90, 80, 75],
+              backgroundColor: "rgba(230, 99, 60, 0.2)",
+              borderColor: "#E6633C",
+              borderWidth: 2,
+              pointBackgroundColor: "#F21511",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: { r: { beginAtZero: true, max: 100 } },
+        },
+      });
+    </script>
 
     <script src="./sidebar.js"></script>
     <script src="./footer.js"></script>

@@ -358,6 +358,15 @@ header {
     }
 }
 
+@media screen and (max-width:625px) {
+    .headings h1 {
+    font-size: larger;
+}
+.blog-post a {
+    font-size: small;
+}
+}
+
 /* ------------------ FOOTER PAGE ------------------------ */
 
 footer {

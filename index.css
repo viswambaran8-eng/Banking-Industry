@@ -725,7 +725,7 @@ html {
 .block2 {
   padding: 10px 5%;
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   margin-bottom: 10px;
   margin-top: 10px;
@@ -739,6 +739,55 @@ html {
   object-fit: cover;
 }
 
+@media screen and (max-width: 1000px) {
+  .Head nav {
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 646px) {
+  .Head nav {
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    margin-left: 30px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .Table .box h2 {
+    font-size: large;
+  }
+  .Table .box p {
+    font-size: small;
+  }
+}
+
+@media screen and (max-width: 905px) {
+  .block .Table {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 1025px) {
+  .block2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width:625px) {
+  .block2 {
+    grid-template-columns: auto;
+    margin-top: 0px;
+  }
+  .headings h1 {
+    margin-bottom: 0px;
+  }
+  .Head nav a {
+    font-size: medium;
+  }
+}
 
 /* ------------------ FOOTER PAGE ------------------------ */
 
