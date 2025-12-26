@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* ===== TAB LINKS ===== */
+.tab-links {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.tab-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: #555;
+  padding-bottom: 6px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.tab-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #e6633c, #f21511);
+  transition: width 0.4s ease;
+}
+
+.tab-link:hover,
+.tab-link.active {
+  color: #f21511;
+}
+
+.tab-link.active::after {
+  width: 100%;
+}
+
+/* ===== CONTENT ===== */
+.tab-content {
+  max-width: 900px;
+  margin: auto;
+}
+
+/* ===== PANELS ===== */
+.tab-panel {
+  display: none;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: none;
+}
+
+.tab-panel.active {
+  display: block;
+  animation: tabReveal 0.6s ease forwards;
+}
+
+/* ===== REVEAL ANIMATION ===== */
+@keyframes tabReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+</style>
+<body>
+    <!-- ===== TOP LINKS ===== -->
+<div class="tab-links">
+  <a href="#" class="tab-link active" data-target="tab1">Overview</a>
+  <a href="#" class="tab-link" data-target="tab2">Services</a>
+  <a href="#" class="tab-link" data-target="tab3">Solutions</a>
+  <a href="#" class="tab-link" data-target="tab4">Contact</a>
+</div>
+
+<!-- ===== CONTENT AREA ===== -->
+<div class="tab-content">
+
+  <div class="tab-panel active" id="tab1">
+    <h2>Overview</h2>
+    <p>This is overview content.</p>
+  </div>
+
+  <div class="tab-panel" id="tab2">
+    <h2>Services</h2>
+    <p>This is services content.</p>
+  </div>
+
+  <div class="tab-panel" id="tab3">
+    <h2>Solutions</h2>
+    <p>This is solutions content.</p>
+  </div>
+
+  <div class="tab-panel" id="tab4">
+    <h2>Contact</h2>
+    <p>This is contact content.</p>
+  </div>
+
+</div>
+
+<script>
+  const links = document.querySelectorAll(".tab-link");
+  const panels = document.querySelectorAll(".tab-panel");
+
+  links.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+
+      // Remove active states
+      links.forEach(l => l.classList.remove("active"));
+      panels.forEach(p => p.classList.remove("active"));
+
+      // Activate clicked link
+      link.classList.add("active");
+
+      // Show related panel
+      const target = document.getElementById(link.dataset.target);
+      target.classList.add("active");
+
+      // Smooth scroll to content
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+</script>
+
+</body>
+</html>

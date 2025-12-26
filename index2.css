@@ -118,9 +118,10 @@ header {
   bottom: -45px;
   padding: 10px 6px;
   color: #f21511;
-  background-color: white;
+  background-color: beige;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
+  z-index: 100;
 }
 
 @media screen and (max-width: 1200px) {
@@ -238,98 +239,146 @@ header {
 }
 
 /* ----------------------------------- */
-
-/* MAIN WRAPPER */
+/* ================= MAIN WRAPPER ================= */
 .service-cards {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 30px;
   margin-top: 50px;
 }
 
-/* CARD STYLING */
+/* ================= CARD BASE ================= */
 .service-card {
-  background: white;
+  background: #ffffff;
   padding: 30px;
-  border-radius: 15px;
+  border-radius: 18px;
   text-align: center;
-  border: 1px solid rgba(0,0,0,0.08);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  transition: all 0.4s ease-in-out;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  border: 4px solid rgba(0, 0, 0, 0.08);
+  /* reveal animation */
+  opacity: 0;
+  transform: translateY(40px) scale(0.96);
+  animation: premiumReveal 0.9s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
-/* ICON */
+/* stagger */
+.service-card.one {
+  animation-delay: 0.15s;
+}
+.service-card.two {
+  animation-delay: 0.3s;
+}
+.service-card.three {
+  animation-delay: 0.45s;
+}
+.service-card.four {
+  animation-delay: 0.6s;
+}
+
+@keyframes premiumReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ================= IMAGE ================= */
+.service-card img {
+  width: 100%;
+  height: 50vh;
+  object-fit: cover;
+  padding: 10px;
+  border-radius: 14px;
+  transition: transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  filter: brightness(60%);
+  filter: saturate(60%);
+}
+
+.service-card:hover img {
+  transform: scale(1.08) translateY(-6px);
+  filter: brightness(120%);
+  filter: saturate(120%);
+}
+
+/* ================= ICON ================= */
 .service-card i {
   font-size: 40px;
-  margin-bottom: 15px;
+  margin: 15px 0;
 
-  /* Gradient Icon */
-  background: linear-gradient(to right, #e6633c, #f21511);
+  background: linear-gradient(90deg, #e6633c, #f21511);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  transition: transform 0.5s ease, filter 0.5s ease;
 }
 
-/* HEADINGS - Gradient WebKit */
+.service-card:hover i {
+  transform: translateY(-6px) scale(1.15);
+  filter: drop-shadow(0 6px 14px rgba(242, 21, 17, 0.45));
+}
+
+/* ================= HEADING ================= */
 .service-card h3 {
   font-size: 22px;
-  margin-bottom: 10px;
-  background: linear-gradient(to right, #e6633c, #f21511);
+  margin-bottom: 12px;
+
+  background: linear-gradient(90deg, #e6633c, #f21511, #e6633c);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  transition: letter-spacing 0.4s ease;
 }
 
-/* PARAGRAPH - Visible Gray + Light WebKit gradient blend */
+.service-card:hover h3 {
+  animation: titleFlow 2.5s linear infinite;
+  letter-spacing: 0.6px;
+}
+
+@keyframes titleFlow {
+  from {
+    background-position: 0%;
+  }
+  to {
+    background-position: 200%;
+  }
+}
+
+/* ================= TEXT ================= */
 .service-card p {
   font-size: 16px;
-  line-height: 1.5;
-  color: #444;
+  line-height: 1.6;
+  margin-top: 6px;
 
-  /* Soft gradient overlay for visibility */
-  background: linear-gradient(to right, #4f4f4f, #222);
+  background: linear-gradient(90deg, #444, #222);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* HOVER EFFECTS */
+/* ================= HOVER ELEVATION ================= */
 .service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0, 98, 206, 0.25);
+  transform: translateY(-14px) scale(1.02);
+  box-shadow: 0 18px 45px rgba(230, 99, 60, 0.25);
   border-color: #e6633c;
 }
 
-/* GRADIENT HOVER GLOW EFFECT */
+/* ================= GLOW OVERLAY ================= */
 .service-card::after {
   content: "";
   position: absolute;
   inset: 0;
+  background: linear-gradient(120deg, #e6633c, #f21511);
   opacity: 0;
-  background: linear-gradient(to right, #e6633c, #f21511);
   z-index: -1;
-  transition: 0.4s ease;
+  transition: opacity 0.4s ease;
 }
 
 .service-card:hover::after {
-  opacity: 0.2;
-}
-
-/* ANIMATION */
-.service-card {
-  animation: cardFadeUp 0.8s ease forwards;
-  opacity: 0;
-}
-
-@keyframes cardFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  opacity: 0.22;
 }
 
 .service-card .card-img {
@@ -341,28 +390,35 @@ header {
 }
 
 .service-cards img {
-    width: 100%;
-    object-fit: cover;
-    height: 50vh;
-    padding: 10px;
+  width: 100%;
+  object-fit: cover;
+  height: 50vh;
+  padding: 10px;
 }
 
-@media screen and (max-width:1050px) {
-    .service-cards {
-        grid-template-columns: auto;
-    }
-    .service-cards img {
+@media screen and (max-width: 1050px) {
+  .service-cards {
+    grid-template-columns: auto;
+  }
+  .service-cards img {
     width: 100%;
     object-fit: cover;
     height: 40vh;
     padding: 10px;
+  }
 }
+
+@media screen and (max-width: 650px) {
+  .service-card {
+    padding: 15px;
+  }
 }
 
 /* ----------------------------------- */
 
 .Structure {
-    padding: 10px 5%;
+  padding: 10px 5%;
+  overflow-x: hidden;
 }
 
 .headings {
@@ -376,7 +432,7 @@ header {
 
 .headings h3 {
   font-family: "Lora", serif;
-  font-size: 28px;
+  font-size: 30px;
   background: linear-gradient(to right, #e6633c, #f21511);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -406,7 +462,7 @@ header {
     font-size: x-large;
   }
   .headings h3 {
-    font-size: 24px;
+    font-size: x-large;
   }
   .headings p {
     font-size: medium;
@@ -418,7 +474,7 @@ header {
     font-size: 22px;
   }
   .headings h3 {
-    font-size: 20px;
+    font-size: 22px;
   }
   .headings p {
     font-size: small;
@@ -426,81 +482,162 @@ header {
 }
 /* -------------------------------------- */
 
-
+/* ================= PROJECT GRID ================= */
 .project-cards {
   width: 100%;
   margin-top: 40px;
   display: grid;
-  grid-template-columns: repeat( 2, 1fr);
-  gap: 25px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
 }
 
+/* ================= CARD BASE ================= */
 .project-card {
   background: #ffffff;
-  border-radius: 14px;
-  padding: 20px;
+  border-radius: 18px;
+  padding: 22px;
   text-align: center;
-  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
-  transition: 0.3s ease;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border: 4px solid rgba(0, 0, 0, 0.08);
+
+  /* smooth base animation */
+  transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1),
+    box-shadow 0.6s ease, border 0.4s ease;
 }
 
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 7px 22px rgba(0, 0, 0, 0.15);
-}
-
+/* ================= IMAGE ================= */
 .project-card img {
   width: 100%;
   height: 50vh;
-  border-radius: 12px;
-  margin-bottom: 15px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 16px;
+  transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+  filter: brightness(60%);
+  filter: saturate(60%);
 }
 
-.project-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
+/* ================= ICON ================= */
 .project-card i {
-  font-size: 40px;
-  margin-bottom: 15px;
+  font-size: 42px;
+  margin-bottom: 14px;
 
-  /* Gradient Icon */
-  background: linear-gradient(to right, #e6633c, #f21511);
+  background: linear-gradient(90deg, #e6633c, #f21511);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  transition: transform 0.6s ease, filter 0.6s ease;
 }
 
-
+/* ================= HEADING ================= */
 .project-card h3 {
-  font-size: 20px;
-  font-weight: bold;
-  background: linear-gradient(to right, #e6633c, #f21511);
+  font-size: 21px;
+  font-weight: 700;
+  margin-bottom: 8px;
+
+  background: linear-gradient(90deg, #e6633c, #f21511, #e6633c);
+  background-size: 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  transition: letter-spacing 0.4s ease;
 }
 
+/* ================= TEXT ================= */
 .project-card p {
-  margin-top: 10px;
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.6;
   color: #555;
+  max-width: 90%;
 }
 
-@media screen and (max-width:700px) {
-    .project-cards {
-        grid-template-columns: repeat(1,1fr);
-    }
-
-    .project-card img {
-        height: 30vh;
-    }
+/* ================= PREMIUM HOVER ================= */
+.project-card:hover {
+  transform: translateY(-14px) scale(1.03);
+  box-shadow: 0 20px 45px rgba(230, 99, 60, 0.25),
+    0 0 35px rgba(242, 21, 17, 0.15);
 }
 
-/* ----------- CARD GRID LAYOUT ----------- */
+/* image parallax */
+.project-card:hover img {
+  transform: scale(1.08) translateY(-8px);
+  filter: brightness(120%);
+  filter: saturate(120%);
+}
+
+/* icon lift */
+.project-card:hover i {
+  transform: translateY(-4px) scale(1.12);
+  filter: drop-shadow(0 8px 18px rgba(242, 21, 17, 0.45));
+}
+
+/* animated heading gradient */
+.project-card:hover h3 {
+  animation: titleFlow 2.5s linear infinite;
+  letter-spacing: 0.6px;
+}
+
+@keyframes titleFlow {
+  from {
+    background-position: 0%;
+  }
+  to {
+    background-position: 200%;
+  }
+}
+
+/* ================= GLOW OVERLAY ================= */
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(230, 99, 60, 0.18),
+    rgba(242, 21, 17, 0.22),
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  pointer-events: none;
+}
+
+.project-card:hover::before {
+  transform: translateX(0);
+}
+
+/* ================= SOFT AMBIENT GLOW ================= */
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(120deg, #e6633c, #f21511);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+}
+
+.project-card:hover::after {
+  opacity: 0.18;
+}
+
+@media screen and (max-width: 700px) {
+  .project-cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .project-card img {
+    height: 30vh;
+  }
+}
+/* ================= GRID ================= */
 .loan-cards {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -508,80 +645,141 @@ header {
   padding: 40px 0;
 }
 
-/* ----------- CARD STYLE ----------- */
+/* ================= CARD BASE ================= */
 .loan-card {
   background: #ffffff;
-  padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 28px 24px;
+  border-radius: 22px;
   position: relative;
-  border: 2px solid #ffffff;
+  overflow: hidden;
+  cursor: pointer;
+
+  border: 4px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+
+  transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1),
+    box-shadow 0.6s ease, border-color 0.4s ease;
 }
 
-/* Hover animation */
+/* ================= PREMIUM HOVER ================= */
 .loan-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0px 8px 22px rgba(0,0,0,0.18);
-  border-color: #f21511; /* highlight border on hover */
+  transform: translateY(-16px) scale(1.04);
+  box-shadow: 0 22px 50px rgba(230, 99, 60, 0.25),
+    0 0 30px rgba(242, 21, 17, 0.18);
+  border-color: #f21511;
 }
 
-/* ----------- GRADIENT HEADING TEXT ----------- */
+/* ================= HEADING ================= */
 .loan-card h3 {
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 700;
-  background: linear-gradient(to right, #e6633c, #f21511);
+  margin-bottom: 8px;
+
+  background: linear-gradient(90deg, #e6633c, #f21511, #e6633c);
+  background-size: 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 10px;
 }
 
-/* ----------- DETAILS TEXT ----------- */
+.loan-card:hover h3 {
+  animation: titleFlow 2.5s linear infinite;
+}
+
+@keyframes titleFlow {
+  from {
+    background-position: 0%;
+  }
+  to {
+    background-position: 200%;
+  }
+}
+
+/* ================= TAG ================= */
+.tag {
+  display: inline-block;
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  background: rgba(242, 21, 17, 0.12);
+  color: #f21511;
+}
+
+/* ================= TEXT ================= */
 .loan-card p {
-  margin: 8px 0;
+  margin: 7px 0;
   font-size: 15px;
   color: #333;
-  line-height: 1.5;
+  line-height: 1.55;
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-/* Bold labels for details */
-.loan-card p span {
-  font-weight: 600;
-  color: #f21511; /* matches gradient end */
+.loan-card:hover p {
+  transform: translateX(4px);
+  opacity: 0.95;
 }
 
-/* ----------- BUTTON ----------- */
+/* ================= BUTTON ================= */
 .loan-btn {
-  margin-top: 15px;
-  padding: 10px 18px;
-  background: linear-gradient(to right, #e6633c, #f21511); /* NEW GRADIENT */
+  margin-top: 16px;
+  padding: 11px 22px;
+  border-radius: 30px;
+  border: none;
+
+  background: linear-gradient(45deg, #e6633c, #f21511);
   color: #fff;
   font-size: 14px;
-  letter-spacing: 0.3px;
-  border: none;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1),
+    box-shadow 0.4s ease;
 }
 
-/* Arrow button hover (glow + scale) */
-.loan-btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0px 4px 12px rgba(0, 98, 206, 0.4); /* glow effect */
+.loan-card:hover .loan-btn {
+  transform: scale(1.1);
+  box-shadow: 0 10px 22px rgba(242, 21, 17, 0.45),
+    0 0 18px rgba(230, 99, 60, 0.45);
 }
 
-/* Arrow animation */
-.loan-btn i {
-  transition: transform 0.3s ease;
+/* ================= SLIDE GLOW ================= */
+.loan-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(230, 99, 60, 0.18),
+    rgba(242, 21, 17, 0.22),
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  pointer-events: none;
 }
 
-.loan-btn:hover i {
-  transform: translateX(4px);
+.loan-card:hover::before {
+  transform: translateX(0);
 }
 
-/* ----------- RESPONSIVE ----------- */
+/* ================= AMBIENT GLOW ================= */
+.loan-card::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(120deg, #e6633c, #f21511);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+}
+
+.loan-card:hover::after {
+  opacity: 0.18;
+}
+
+/* ================= RESPONSIVE (UNCHANGED) ================= */
 @media (max-width: 1024px) {
   .loan-cards {
     grid-template-columns: repeat(2, 1fr);
@@ -594,62 +792,135 @@ header {
   }
 }
 
-/* ----------- SEARCH BAR ----------- */
+/* ----------- SEARCH BAR CONTAINER ----------- */
 .loan-search {
   display: flex;
   gap: 15px;
   align-items: center;
   margin: 30px 0;
+  animation: slideFadeUp 0.9s ease forwards;
 }
 
+/* ----------- INPUT & SELECT ----------- */
 .loan-search input,
 .loan-search select {
   padding: 12px 18px;
   width: 260px;
   border-radius: 50px;
-  border: 2px solid #e6633c;
+  border: 2px solid transparent;
   outline: none;
   font-size: 15px;
+  background: linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(135deg, #e6633c, #f21511) border-box;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
 }
 
+/* Focus glow animation */
 .loan-search input:focus,
 .loan-search select:focus {
-  border-color: #f21511;
-  box-shadow: 0 0 8px rgba(0, 98, 206, 0.3);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(242, 21, 17, 0.4), 0 0 25px rgba(230, 99, 60, 0.25);
 }
 
+/* Subtle hover breathing */
+.loan-search input:hover,
+.loan-search select:hover {
+  animation: breathe 2s infinite ease-in-out;
+}
+
+/* ----------- SEARCH BUTTON ----------- */
 #searchBtn {
-  padding: 12px 20px;
+  padding: 12px 22px;
   border-radius: 50px;
   border: none;
   cursor: pointer;
-  color: #f5faff;
   font-size: 16px;
-  transition: 0.3s ease;
+  background: linear-gradient(135deg, #e6633c, #f21511);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Gradient shimmer effect */
+#searchBtn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  transition: 0.6s ease;
+}
+
+#searchBtn:hover::before {
+  left: 120%;
 }
 
 #searchBtn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0, 98, 206, 0.4);
+  transform: scale(1.12) rotate(2deg);
+  box-shadow: 0 8px 22px rgba(242, 21, 17, 0.5), 0 0 30px rgba(230, 99, 60, 0.4);
 }
 
+/* Icon bounce */
 #searchBtn i {
-  pointer-events: none;
-  color: orangered;
+  color: #fff;
+  transition: transform 0.4s ease;
 }
 
-@media screen and (max-width:520px) {
+#searchBtn:hover i {
+  transform: scale(1.2) rotate(-10deg);
+}
+
+/* ----------- MOBILE ----------- */
+@media screen and (max-width: 520px) {
   .loan-search {
-    display: flex;
     flex-direction: column;
+    animation: fadeIn 1s ease forwards;
   }
 }
 
+/* ----------- GLOBAL SCROLL ----------- */
 html {
-    scroll-behavior: smooth;
-    transition: 0.8s;
+  scroll-behavior: smooth;
 }
 
+/* ----------- KEYFRAMES ----------- */
+@keyframes slideFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(242, 21, 17, 0.35);
+  }
+}
 
 /* ------------------ FOOTER PAGE ------------------------ */
 
@@ -787,4 +1058,78 @@ footer {
   .footer-header {
     font-size: larger;
   }
+}
+
+/* Loader */
+
+.the-main {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease;
+}
+
+.body1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "Roboto-slab", serif;
+  background: black;
+  z-index: 1000;
+  width: 100vw;
+  position: fixed;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+.loader {
+  position: relative;
+}
+
+.loader .circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+  /* border: 2px solid white; */
+}
+
+.loader span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+  font-weight: 700;
+  color: #f21511;
+  text-shadow: 0 0 8px #f21511;
+  letter-spacing: 2.5px;
+}
+
+.loader .point {
+  width: 3px;
+  height: 20px;
+  border-radius: 3px;
+  background: #0007;
+  position: absolute;
+  transform: rotate(calc(var(--i) * var(--rot))) translateY(-120px);
+  animation: glow 0.8s linear infinite;
+  animation-delay: calc(var(--i) * 0.01s);
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    background: #0007;
+    box-shadow: none;
+  }
+  50% {
+    background: #f21511;
+    box-shadow: 0 0 10px #f21511;
+  }
+}
+
+.hidden {
+  display: none;
 }
