@@ -246,70 +246,93 @@
 
       <!-- nav  -->
 
+      <section class="section-wrapper">
+        <!-- ===== STICKY TAB NAV (ONLY INSIDE SECTION) ===== -->
+        <div class="Head">
+          <nav>
+            <a href="#" class="active" data-tab="Table1">• Investing Basics</a>
+            <a href="#" data-tab="Table2">• Find a Credit Card</a>
+            <a href="#" data-tab="Table3">• Payment Technologies</a>
+            <a href="#" data-tab="Table4">• Card Benefits</a>
+            <a href="#" data-tab="Table5">• Digital Wallets</a>
+          </nav>
+        </div>
 
-<section class="section-wrapper">
+        <!-- ===== CONTENT ===== -->
+        <div class="block">
+          <div class="Table active" id="Table1">
+            <div class="box"><img src="./Assets/it1_11zon.webp" /></div>
+            <div class="box">
+              <h2>
+                Nothing is impossible. We can help you achieve your goals!
+              </h2>
+              <p>
+                Ring-fencing regulations improve financial stability, customer
+                protection, and long-term banking confidence.
+              </p>
+              <a href="./error.html">
+                <button>Learn more</button>
+              </a>
+            </div>
+          </div>
 
-  <!-- ===== STICKY TAB NAV (ONLY INSIDE SECTION) ===== -->
-  <div class="Head">
-    <nav>
-      <a href="#" class="active" data-tab="Table1">• Investing Basics</a>
-      <a href="#" data-tab="Table2">• Find a Credit Card</a>
-      <a href="#" data-tab="Table3">• Payment Technologies</a>
-      <a href="#" data-tab="Table4">• Card Benefits</a>
-      <a href="#" data-tab="Table5">• Digital Wallets</a>
-    </nav>
-  </div>
+          <div class="Table" id="Table2">
+            <div class="box"><img src="./Assets/it4_11zon.webp" /></div>
+            <div class="box">
+              <h2>Find the card that’s right for you</h2>
+              <p>
+                Enjoy premium rewards, flexible spending limits, enhanced
+                security, and exclusive card benefits.
+              </p>
+              <a href="./error.html">
+                <button>Learn more</button>
+              </a>
+            </div>
+          </div>
 
-  <!-- ===== CONTENT ===== -->
-  <div class="block">
+          <div class="Table" id="Table3">
+            <div class="box"><img src="./Assets/it2_11zon.webp" /></div>
+            <div class="box">
+              <h2>Transforming the way you pay</h2>
+              <p>
+                Fast, secure, and seamless payment technologies designed for
+                modern digital lifestyles.
+              </p>
+              <a href="./error.html">
+                <button>Learn more</button>
+              </a>
+            </div>
+          </div>
 
-    <div class="Table active" id="Table1">
-      <div class="box"><img src="./Assets/it1_11zon.webp"></div>
-      <div class="box">
-        <h2>Nothing is impossible. We can help you achieve your goals!</h2>
-        <p>Ring-fencing regulations improve financial stability, customer protection, and long-term banking confidence.</p>
-        <button>Learn More</button>
-      </div>
-    </div>
+          <div class="Table" id="Table4">
+            <div class="box"><img src="./Assets/it3_11zon.webp" /></div>
+            <div class="box">
+              <h2>Debit & Credit Card Protection Tips</h2>
+              <p>
+                Advanced fraud detection, real-time alerts, and intelligent
+                transaction monitoring systems.
+              </p>
+              <a href="./error.html">
+                <button>Learn more</button>
+              </a>
+            </div>
+          </div>
 
-    <div class="Table" id="Table2">
-      <div class="box"><img src="./Assets/it4_11zon.webp"></div>
-      <div class="box">
-        <h2>Find the card that’s right for you</h2>
-        <p>Enjoy premium rewards, flexible spending limits, enhanced security, and exclusive card benefits.</p>
-        <button>Learn More</button>
-      </div>
-    </div>
-
-    <div class="Table" id="Table3">
-      <div class="box"><img src="./Assets/it2_11zon.webp"></div>
-      <div class="box">
-        <h2>Transforming the way you pay</h2>
-        <p>Fast, secure, and seamless payment technologies designed for modern digital lifestyles.</p>
-        <button>Learn More</button>
-      </div>
-    </div>
-
-    <div class="Table" id="Table4">
-      <div class="box"><img src="./Assets/it3_11zon.webp"></div>
-      <div class="box">
-        <h2>Debit & Credit Card Protection Tips</h2>
-        <p>Advanced fraud detection, real-time alerts, and intelligent transaction monitoring systems.</p>
-        <button>Learn More</button>
-      </div>
-    </div>
-
-    <div class="Table" id="Table5">
-      <div class="box"><img src="./Assets/it5_11zon.webp"></div>
-      <div class="box">
-        <h2>Privacy, Innovation & Security in Digital Payments</h2>
-        <p>Secure digital wallets offering privacy, speed, and seamless cross-device payment experiences.</p>
-        <button>Learn More</button>
-      </div>
-    </div>
-
-  </div>
-</section>
+          <div class="Table" id="Table5">
+            <div class="box"><img src="./Assets/it5_11zon.webp" /></div>
+            <div class="box">
+              <h2>Privacy, Innovation & Security in Digital Payments</h2>
+              <p>
+                Secure digital wallets offering privacy, speed, and seamless
+                cross-device payment experiences.
+              </p>
+              <a href="./error.html">
+                <button>Learn more</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <div class="headings">
         <h1 data-aos="fade-up" data-aos-delay="100">
@@ -318,7 +341,6 @@
       </div>
 
       <div class="block2">
-
         <div class="cards" data-aos="fade-up" data-aos-delay="100">
           <img src="./Assets/bi1_11zon.webp" alt="" />
           <p>Why Not Using Credit Cards Can Hurt You , Here We Explain why ?</p>
@@ -350,7 +372,6 @@
             <button>Learn more</button>
           </a>
         </div>
-
       </div>
 
       <footer data-aos="fade-up">
@@ -430,37 +451,38 @@
 
     <script src="./loader.js"></script>
 
-<script>
-  const links = document.querySelectorAll(".Head nav a");
-  const tables = document.querySelectorAll(".Table");
-  const section = document.querySelector(".tab-section");
+    <script>
+      const links = document.querySelectorAll(".Head nav a");
+      const tables = document.querySelectorAll(".Table");
+      const section = document.querySelector(".tab-section");
 
-  links.forEach(link => {
-    link.addEventListener("click", e => {
-      e.preventDefault();
+      links.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
 
-      const targetId = link.dataset.tab;
-      const targetTable = document.getElementById(targetId);
+          const targetId = link.dataset.tab;
+          const targetTable = document.getElementById(targetId);
 
-      // Remove active states
-      links.forEach(l => l.classList.remove("active"));
-      tables.forEach(t => t.classList.remove("active"));
+          // Remove active states
+          links.forEach((l) => l.classList.remove("active"));
+          tables.forEach((t) => t.classList.remove("active"));
 
-      // Activate clicked tab & content
-      link.classList.add("active");
-      targetTable.classList.add("active");
+          // Activate clicked tab & content
+          link.classList.add("active");
+          targetTable.classList.add("active");
 
-      // Smooth scroll to section (keeps sticky behavior correct)
-      const yOffset = -section.offsetTop + 20;
-      const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          // Smooth scroll to section (keeps sticky behavior correct)
+          const yOffset = -section.offsetTop + 20;
+          const y =
+            section.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
-      window.scrollTo({
-        top: y,
-        behavior: "smooth"
+          window.scrollTo({
+            top: y,
+            behavior: "smooth",
+          });
+        });
       });
-    });
-  });
-</script>
+    </script>
 
     <script src="./sidebar.js"></script>
     <script src="./footer.js"></script>
